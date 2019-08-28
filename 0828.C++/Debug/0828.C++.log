@@ -1,0 +1,2 @@
+﻿  test.cpp
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\0828.c++\0828.c++\test.cpp(44): error C4700: 使用了未初始化的局部变量“test”
