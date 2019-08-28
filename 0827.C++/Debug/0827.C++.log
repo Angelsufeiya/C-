@@ -1,0 +1,11 @@
+﻿  porkersort.cpp
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\0827.c++\0827.c++\porkersort.cpp(26): error C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283) : 参见“scanf”的声明
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\0827.c++\0827.c++\porkersort.cpp(37): error C2819: “Poker”类型没有重载成员“operator ->”
+          \\vmware-host\shared folders\文稿\visual studio 2013\projects\0827.c++\0827.c++\porkersort.cpp(11) : 参见“Poker”的声明
+          是否改用“.”?
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\0827.c++\0827.c++\porkersort.cpp(37): error C2232: “->Poker::type”: 左操作数有“struct”类型，使用“.”
+          \\vmware-host\shared folders\文稿\visual studio 2013\projects\0827.c++\0827.c++\porkersort.cpp(11) : 参见“Poker”的声明
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\0827.c++\0827.c++\porkersort.cpp(37): error C2232: “->Poker::point”: 左操作数有“struct”类型，使用“.”
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\0827.c++\0827.c++\porkersort.cpp(44): error C2664: “void output_poker(Poker)”: 无法将参数 1 从“Poker *”转换为“Poker”
+          无构造函数可以接受源类型，或构造函数重载决策不明确
