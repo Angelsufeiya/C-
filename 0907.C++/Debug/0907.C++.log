@@ -1,0 +1,7 @@
+﻿  test.cpp
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\0907.c++\0907.c++\test.cpp(18): error C2059: 语法错误:“)”
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\0907.c++\0907.c++\test.cpp(22): error C2059: 语法错误:“return”
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\0907.c++\0907.c++\test.cpp(23): error C2059: 语法错误:“}”
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\0907.c++\0907.c++\test.cpp(23): error C2143: 语法错误 : 缺少“;”(在“}”的前面)
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\0907.c++\0907.c++\test.cpp(25): error C2143: 语法错误 : 缺少“;”(在“{”的前面)
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\0907.c++\0907.c++\test.cpp(25): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
