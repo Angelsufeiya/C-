@@ -1,0 +1,7 @@
+﻿  task.c
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\task(通讯录)\task(通讯录)\task.c(100): warning C4013: “saveData”未定义；假设外部返回 int
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\task(通讯录)\task(通讯录)\task.c(91): warning C4101: “ret”: 未引用的局部变量
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\task(通讯录)\task(通讯录)\task.c(91): warning C4101: “op”: 未引用的局部变量
+  mailLists.c
+\\vmware-host\shared folders\文稿\visual studio 2013\projects\task(通讯录)\task(通讯录)\maillists.c(197): error C2065: “i”: 未声明的标识符
+  正在生成代码...
