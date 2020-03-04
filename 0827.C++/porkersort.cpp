@@ -33,11 +33,11 @@ void input_poker(Poker * pk){
 	}
 }
 
-void output_poker(Poker k){
+void output_poker(Poker *k){
 	char *type[5] = { "ºÚÌÒ", "Ã·»¨", "Ã·»¨", "·½Æ¬", " " };
 	char *point[16] = { "", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "", "" };
 
-	printf("%s%s\n", type[pk->type], point[pk->point]);
+	printf("%s%s\n", type[k->type], point[k->point]);
 }
 
 int main(){
@@ -51,7 +51,7 @@ int main(){
 	while (1){
 		input_poker(&p);
 		while(getchar() != '\n');
-		output_poker(p);
+		output_poker(&p);
 		puts("");
 	}
 
