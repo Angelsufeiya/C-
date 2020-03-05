@@ -7,7 +7,7 @@ int& Add(int a, int b)
 	return c;
 }
 
-int main_0() {
+int main_00() {
 	int& ret = Add(1, 2);
 	Add(3, 4);
 	cout << "Add(1, 2) is :" << ret << endl;
@@ -24,7 +24,7 @@ void func(int& a, int& b)
 }
 
 
-int main_1()
+int main_01()
 {
 	const int a = 10;
 	const int& ra = a;
@@ -63,7 +63,7 @@ void TestAutoa()
 	//auto b[] = { 4,5,6 };//auto不能直接用来声明数组
 }
 
-int main() {
+int main_02() {
 	int a = 10;
 	auto b = a;
 	auto c = 'a';
