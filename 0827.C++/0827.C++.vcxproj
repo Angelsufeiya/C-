@@ -66,10 +66,12 @@
   <ItemGroup>
     <ClCompile Include="f.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mask.cpp" />
     <ClCompile Include="porkersort.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="test2.cpp" />
     <ClCompile Include="text.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </ExcludedFromBuild>

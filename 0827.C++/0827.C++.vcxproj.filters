@@ -27,6 +27,12 @@
     <ClCompile Include="f.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="mask.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="f.h">
