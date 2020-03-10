@@ -42,7 +42,7 @@ bool cmpEqlsex(student a, student b) {
 	return !(a.sex ^ b.sex);
 }
 
-int main() {
+int main_0() {
 	student st[] = { {"libing", 21, 1, true},
 					{"qiaobiluo", 58, 0, false},
 					{"yangli", 21, 1, true},
