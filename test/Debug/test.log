@@ -1,4 +1,2 @@
 ﻿  main.cpp
-C:\Users\Apple\Source\Repos\test\test\main.cpp(67,13): error C2662: “void Date::display(void)”: 不能将“this”指针从“const Date”转换为“Date &”
-C:\Users\Apple\Source\Repos\test\test\main.cpp(67,2): message : 转换丢失限定符
-C:\Users\Apple\Source\Repos\test\test\main.cpp(53,7): message : 参见“Date::display”的声明
+  test.vcxproj -> C:\Users\Apple\Source\Repos\test\Debug\test.exe

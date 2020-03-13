@@ -36,36 +36,31 @@ using namespace std;
 //    return 0;
 //}
 
-class Date {
+
+class A
+{
 public:
-	Date(int year, int month, int day) {
-		_year = year;
-		_month = month;
-		_day = day;
-	}
-	Date(const Date& d) {
-		_year = d._year;
-	}
-	//void display() const {     // 相当于 void display(const Date* const this)
-	//	cout << _year << "display() const" << endl; // 可读
-	//}
-
-	void display() {
-		cout << _year << "display()" << endl;
-	}
-
+    A() { 
+        ++_scount; 
+    }
+    A(const A& t) { 
+        ++_scount; 
+    }
+    static int GetACount() { 
+        return _scount; 
+    }
 private:
-	int _year;
-	int _month;
-	int _day;
+    static int _scount;
 };
 
+int A::_scount = 0;
+
 int main() {
-	Date d1(2019, 4, 1);             // 普通对象
-	const Date d2(2019, 3, 31);      // const对象
-	d1.display();
-	d2.display();
+    cout << A::GetACount() << endl;
+    A a1, a2;
+    A a3(a1);
 
-	return 0;
+    cout << A::GetACount() << endl;
+
+    return 0;
 }
-
