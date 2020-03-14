@@ -1,2 +1,6 @@
 ﻿  main.cpp
-  test.vcxproj -> C:\Users\Apple\Source\Repos\test\Debug\test.exe
+C:\Users\Apple\Source\Repos\test\test\main.cpp(231,17): error C3867: “A::B::print”: 非标准语法；请使用 "&" 来创建指向成员的指针
+C:\Users\Apple\Source\Repos\test\test\main.cpp(231,17): fatal error C1903: 无法从以前的错误中恢复；正在停止编译
+  “C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\bin\HostX86\x86\CL.exe”中的内部编译器错误
+    请选择 Visual C++
+  “帮助”菜单上的“技术支持”命令，或打开技术支持帮助文件来获得详细信息
