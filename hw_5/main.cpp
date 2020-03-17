@@ -26,11 +26,11 @@
 
 int main() {
 
-	Date test(2020, 01, 16);
+	Date test(2020, 01, 31);
 
 	cout << test << endl;
 
-	cout << (test + 45) << endl;
+	cout << (test + 10000000) << endl;
 
 	return 0;
 }
