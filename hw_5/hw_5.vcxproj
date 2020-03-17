@@ -140,9 +140,11 @@
   <ItemGroup>
     <ClCompile Include="date.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="seqlist.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h" />
+    <ClInclude Include="seqlist.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

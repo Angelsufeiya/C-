@@ -25,11 +25,25 @@
 #include "date.h"
 
 int main() {
+
 	Date test(2020, 01, 16);
 
 	cout << test << endl;
 
 	cout << (test + 45) << endl;
-	 
+
+	return 0;
+}
+
+
+int main_0() {
+	char* pa = new char[1024];
+	size_t size = 0;
+
+	Date* pd = new(pa + size)Date(2020, 01, 16);
+
+	pd->~Date();
+	delete pa;
+
 	return 0;
 }
