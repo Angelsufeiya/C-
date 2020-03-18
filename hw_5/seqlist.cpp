@@ -1,6 +1,6 @@
 #include "seqlist.h"
 
-int main_2(){
+int main(){
 	SeqList<int> sl;
 
 	sl.push_back(1);

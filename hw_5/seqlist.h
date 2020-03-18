@@ -14,7 +14,7 @@ public:
 	SeqList(size_t size = 0, size_t capacity = 10) :
 		m_data(new T[capacity]),
 		m_size(size),
-		m_capacity(capacity)// > size ? capacity : size)
+		m_capacity(capacity > size ? capacity : size)
 	{
 	}
 
