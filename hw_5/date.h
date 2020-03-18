@@ -10,6 +10,8 @@ class Date {
 	int m_year;
 	_uint m_month;
 	_uint m_day;
+
+	_uint getDayOfYear();
 public:
 	Date(int y, _uint m, _uint d) :
 		m_year(y),
@@ -19,6 +21,8 @@ public:
 	}
 
 	Date operator + (_uint delay) const;
+	Date operator - (_uint delay) const;
+	int operator - (const Date& d) const;
 
 	bool operator > (const Date & d) const;
 	bool operator < (const Date & d) const;

@@ -15,34 +15,14 @@ static _uint getMonthDay(int y, _uint m) {
 
 //得到闰年个数(优化算法）
 int getLeapNum(int sy, int ey) {
-	//将sy处理为包括自身之后的第一个闰年
-	int tmp = sy % 4;
-	if (tmp) {
-		sy += (4 - tmp);
+	int count = 0;
+	while (sy <= ey) {
+		if (((sy % 4 == 0) && (sy % 100)) || (sy % 400 == 0)) {
+			++count;
+		}
+		++sy;
 	}
-	int ly = (ey - sy) / 4 + 1;	//每4年一个闰年（百年没有除外）
-
-	sy /= 100;
-	ey /= 100;
-	//sy++;
-
-	tmp = sy % 4;	//计算每400年
-	if (tmp) {
-		tmp = 4 - tmp;
-		sy += tmp;
-	}
-	//每4年一个闰年 - 每100年得到的平年数（总共的百年间隔 - 每百年的闰年）=真正的闰年数量
-	return ly - ((ey - sy) - ((ey - sy) / 4) + tmp);
-
-	//普通算法
-	//int count = 0;
-	//while (sy <= ey) {
-	//	if (((sy % 4 == 0) && (sy % 100)) || (sy % 400 == 0)) {
-	//		++count;
-	//	}
-	//	++sy;
-	//}
-	//return count;
+	return count;
 }
 
 Date Date::operator + (_uint delay) const {
@@ -96,6 +76,83 @@ Date Date::operator + (_uint delay) const {
 		}
 	}
 	return res;
+}
+
+Date Date::operator - (_uint delay) const {
+	Date res = *this;
+	_uint tmp;
+
+	//存在3月31号，-30天这种特殊情况
+	if (delay < res.m_day) {
+		res.m_day -= delay;
+		return res;
+	}
+
+	if (res.m_month == 1) {
+		res.m_year--;
+		res.m_month = 12;
+	}
+	else {
+		res.m_month--;
+	}
+
+	tmp = getMonthDay(res.m_year, res.m_month);
+	while (delay >= tmp) {
+		delay -= tmp;
+
+		if (res.m_month == 1) {
+			res.m_year--;
+			res.m_month = 12;
+		}
+		else {
+			res.m_month--;
+		}
+
+		tmp = getMonthDay(res.m_year, res.m_month);
+	}
+
+	int tmpday = res.m_day - delay;
+
+	if (tmpday <= 0) {
+		tmpday += tmp;
+	} 
+	else {
+		res.m_month++;
+
+		if (res.m_month > 12) {
+			res.m_month = 1;
+			res.m_year++;
+		}
+	}
+	res.m_day = tmpday;
+
+	return res;
+}
+
+_uint Date::getDayOfYear() {
+	_uint i, days = 0;
+
+	for (i = 1; i < m_month; i++) {
+		days += getMonthDay(m_year, i);
+	}
+
+	return days + m_day;
+}
+
+int Date::operator - (const Date& d) const {
+	Date bigger = *this;
+	Date smaller = d;
+	int flag = 1;
+	if (*this < d) {
+		bigger = d;
+		smaller = *this;
+		flag = -1;
+	}
+	int years = bigger.m_year - smaller.m_year;
+	int days = years * 365 + getLeapNum(smaller.m_year, bigger.m_year - 1);
+
+	days = days - smaller.getDayOfYear() + bigger.getDayOfYear();
+	return days * flag;
 }
 
 ostream & operator << (ostream & os, const Date & d) {
