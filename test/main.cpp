@@ -156,27 +156,36 @@ using namespace std;
 //    return 0;
 //}
 
-class A
-{
-private:
-    static int k;
-    int h = 10;
-public:
-    class B
-    {
-    public:
-        void foo(const A& a)
-        {
-            cout << k << endl;  // 输出 1
-            cout << a.h << endl;// 输出 10
-        }
-    };
-};
+//class A
+//{
+//private:
+//    static int k;
+//    int h = 10;
+//public:
+//    class B
+//    {
+//    public:
+//        void foo(const A& a)
+//        {
+//            cout << k << endl;  // 输出 1
+//            cout << a.h << endl;// 输出 10
+//        }
+//    };
+//};
+//
+//int A::k = 1;
+//
+//int main() {
+//    A::B b;
+//    b.foo(A());
+//    return 0;
+//}
 
-int A::k = 1;
+int main_0() {
+	int a = 0;
 
-int main() {
-    A::B b;
-    b.foo(A());
-    return 0;
+	(++a) = 2; // a = 2
+	//(a++) = 2;
+
+	return 0;
 }
