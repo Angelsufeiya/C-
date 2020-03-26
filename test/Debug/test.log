@@ -1,2 +1,5 @@
 ﻿  mask.cpp
-  test.vcxproj -> C:\Users\Apple\Source\Repos\test\Debug\test.exe
+C:\Users\Apple\Source\Repos\test\test\mask.cpp(206,15): error C2084: 函数“int main_30(void)”已有主体
+C:\Users\Apple\Source\Repos\test\test\mask.cpp(7): message : 参见“main_30”的前一个定义
+  vector.cpp
+  正在生成代码...
