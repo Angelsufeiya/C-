@@ -203,7 +203,7 @@ public:
     }
 };
 
-int main_30() {
+int main_35() {
     Solution S;
     string str;
     getline(cin, str);

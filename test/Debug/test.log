@@ -1,5 +1,3 @@
-﻿  mask.cpp
-C:\Users\Apple\Source\Repos\test\test\mask.cpp(206,15): error C2084: 函数“int main_30(void)”已有主体
-C:\Users\Apple\Source\Repos\test\test\mask.cpp(7): message : 参见“main_30”的前一个定义
-  vector.cpp
-  正在生成代码...
+﻿  vector.cpp
+C:\Users\Apple\Source\Repos\test\test\vector.cpp(142,20): warning C4018: “<”: 有符号/无符号不匹配
+  test.vcxproj -> C:\Users\Apple\Source\Repos\test\Debug\test.exe
