@@ -37,7 +37,7 @@ void Deblank(char * str) {
 		str[p] = '\0';
 }
 
-int main() {
+int main_35() {
 	char array[] = "  asadad   q    ";
 
 	Deblank(array);

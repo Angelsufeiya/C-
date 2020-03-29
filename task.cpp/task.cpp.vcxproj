@@ -138,9 +138,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="highAcc.cpp" />
     <ClCompile Include="task_1.cpp" />
     <ClCompile Include="task_2.cpp" />
     <ClCompile Include="task_3.cpp" />
+    <ClCompile Include="task_4.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="highAcc.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

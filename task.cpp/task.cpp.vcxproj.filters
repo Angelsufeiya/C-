@@ -24,5 +24,16 @@
     <ClCompile Include="task_3.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="highAcc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="task_4.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="highAcc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
