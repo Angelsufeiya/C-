@@ -36,7 +36,7 @@ void print_list(const list<int>& l)
 	cout << endl;
 }
 
-int main() {
+int main_51() {
 	int array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
 	list<int> l(array, array + sizeof(array) / sizeof(array[0])); 
 	
@@ -52,3 +52,107 @@ int main() {
 	return 0;
 }
 
+#include <list>
+#include <vector>
+void PrintList(list<int>& l)
+{
+	for (auto& e : l)
+		cout << e << " ";
+	cout << endl;
+}
+//=========================================================================================
+// push_back/pop_back/push_front/pop_front
+void TestList()
+{
+	int array[] = { 1, 2, 3 };
+	list<int> L(array, array + sizeof(array) / sizeof(array[0]));
+
+	// 在list的尾部插入4，头部插入0
+	L.push_back(4); 
+	L.push_front(0); 
+	PrintList(L);
+
+	// 删除list尾部节点和头部节点 
+	L.pop_back(); 
+	L.pop_front(); 
+	PrintList(L);
+}
+//=========================================================================================
+// insert /erase
+void TestList3()
+{
+	int array1[] = { 1, 2, 3 };
+	list<int> L(array1, array1 + sizeof(array1) / sizeof(array1[0]));
+
+	// 获取链表中第二个节点 
+	auto pos = ++L.begin(); 
+	cout << *pos << endl;
+
+	// 在pos前插入值为4的元素 
+	L.insert(pos, 4); 
+	PrintList(L);
+
+	// 在pos前插入5个值为5的元素 
+	L.insert(pos, 5, 5); 
+	PrintList(L);
+
+	// 在pos前插入[v.begin(), v.end)区间中的元素 
+	vector<int> v{ 7, 8, 9 };
+	L.insert(pos, v.begin(), v.end()); 
+	PrintList(L);
+
+	// 删除pos位置上的元素 
+	L.erase(pos);
+	PrintList(L);
+
+	// 删除list中[begin, end)区间中的元素，即删除list中的所有元素 
+	L.erase(L.begin(), L.end());
+	PrintList(L);
+}
+// resize/swap/clear
+void TestList4()
+{
+	// 用数组来构造list
+	int array1[] = { 1, 2, 3 };
+	int array2[] = { 4, 5, 6 };
+	list<int> l1(array1, array1 + sizeof(array1) / sizeof(array1[0])); 
+	list<int> l2(array2, array2 + sizeof(array2) / sizeof(array2[0]));
+
+	PrintList(l1);
+	PrintList(l2);
+
+	// 交换l1和l2中的元素 
+	l1.swap(l2); 
+	PrintList(l1); 
+	PrintList(l2);
+
+	// 将l2中的元素清空 
+	l2.clear(); 
+	
+	cout<<l2.size()<<endl;
+}
+
+void TestListIterator1()
+{
+	int array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+	list<int> l(array, array + sizeof(array) / sizeof(array[0]));
+	auto it = l.begin();
+	while (it != l.end())
+	{
+		// erase()函数执行后，it所指向的节点已被删除，因此it无效，在下一次使用it时，必须先给其赋值
+		l.erase(it);
+		++it;
+	}
+}
+
+// 改正
+void main() {
+	int array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+	list<int> l(array, array + sizeof(array) / sizeof(array[0]));
+	auto it = l.begin();
+	while (it != l.end())
+	{
+		l.erase(it++);
+		// it = l.erase(it);
+	}
+}
