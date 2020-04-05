@@ -146,7 +146,7 @@ void TestListIterator1()
 }
 
 // ¸ÄÕı
-void main() {
+void main_58() {
 	int array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
 	list<int> l(array, array + sizeof(array) / sizeof(array[0]));
 	auto it = l.begin();

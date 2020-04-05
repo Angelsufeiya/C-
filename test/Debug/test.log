@@ -1,3 +1,2 @@
-﻿  list.cpp
-C:\Users\Apple\Source\Repos\test\test\list.cpp(149,13): warning C4326: “main”的返回类型应为“int”而非“void”
+﻿  queue.cpp
   test.vcxproj -> C:\Users\Apple\Source\Repos\test\Debug\test.exe

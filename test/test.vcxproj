@@ -141,6 +141,7 @@
     <ClCompile Include="list.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mask.cpp" />
+    <ClCompile Include="queue.cpp" />
     <ClCompile Include="string.cpp" />
     <ClCompile Include="vector.cpp" />
   </ItemGroup>
