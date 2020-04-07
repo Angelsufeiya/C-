@@ -4,6 +4,150 @@
 #include <iostream>
 using namespace std;
 
+namespace bit
+{
+    template <class T, class Sequence = vector<T>, class Compare = less<T> >
+    class priority_queue
+    {
+    public:
+        priority_queue() : c()
+        {}
+
+        template <class InputIterator>
+        priority_queue(InputIterator first, InputIterator last)
+            : c(first, last)
+        {
+            make_heap(c.begin(), c.end(), comp);
+        }
+
+        bool empty() const 
+        { 
+            return c.empty(); 
+        }
+
+        size_t size() const 
+        { 
+            return c.size(); 
+        }
+
+        T& top() const 
+        { 
+            return c.front(); 
+        }
+
+        void push(const T & x)
+        {
+            c.push_back(x);
+            push_heap(c.begin(), c.end(), comp);
+        }
+
+        void pop() {
+            pop_heap(c.begin(), c.end(), comp);
+            c.pop_back();
+        }
+    private:
+        Sequence c;
+        Compare comp;
+    };
+}
+
+namespace bit {
+#include<deque>
+    template<class T, class Con = deque<T>>
+    class queue
+    {
+    public:
+        queue() 
+        {}
+
+        void push(const T& x) 
+        { 
+            _c.push_back(x); 
+        }
+
+        void pop() 
+        { 
+            _c.pop_front(); 
+        }
+
+        T& back() 
+        { 
+            return _c.back(); 
+        }
+
+        const T& back()const 
+        { 
+            return _c.back(); 
+        }
+
+        T& front() 
+        { 
+            return _c.front(); 
+        }
+        
+        const T& front()const 
+        { 
+            return _c.front(); 
+        }
+
+        size_t size()const 
+        { 
+            return _c.size(); 
+        }
+
+        bool empty()const 
+        { 
+            return _c.empty(); 
+        }
+    private:
+        Con _c;
+    };
+}
+
+namespace bit
+{
+#include<deque>
+    template<class T, class Con = deque<T>>
+    class stack
+    {
+    public:
+        stack() 
+        {}
+
+        void push(const T& x) 
+        { 
+            _c.push_back(x); 
+        }
+
+        void pop() 
+        { 
+            _c.pop_back(); 
+        }
+
+        T& top() 
+        { 
+            return _c.back(); 
+        }
+
+        const T& top()const 
+        { 
+            return _c.back(); 
+        }
+
+        size_t size()const 
+        { 
+            return _c.size(); 
+        }
+
+        bool empty()const 
+        { 
+            return _c.empty(); 
+        }
+    private:
+        Con _c;
+    };
+}
+
 void TestPriorityQueue1()
 {
     // 默认情况下，创建的是大堆，其底层按照小于号比较 
