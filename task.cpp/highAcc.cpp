@@ -7,7 +7,7 @@ string multiply(string num1, string num2) {
 	return (string)(s1 * s2);
 }
 
-int main() {
+int main_000() {
 	string s1("2020");
 	string s2("202");
 

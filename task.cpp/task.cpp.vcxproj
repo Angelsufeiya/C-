@@ -141,8 +141,16 @@
     <ClCompile Include="highAcc.cpp" />
     <ClCompile Include="task_1.cpp" />
     <ClCompile Include="task_2.cpp" />
-    <ClCompile Include="task_3.cpp" />
-    <ClCompile Include="task_4.cpp" />
+    <ClCompile Include="task_3.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="task_4.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="task_5.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="task_6.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="highAcc.h" />
