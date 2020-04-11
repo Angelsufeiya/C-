@@ -194,7 +194,7 @@ public:
     } 
 };
 
-void TestPriorityQueue()
+void TestPriorityQueue1()
 {
     // 大堆，需要用户在自定义类型中提供<的重载 
     priority_queue<Date> q1; 
