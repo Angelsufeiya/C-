@@ -8,7 +8,7 @@ bool IsEqual(T& left, T& right)
     return left == right;
 }
 
-int main() {
+int main_t() {
     const char* p1 = "hello";
     const char* p2 = "world";
     if (IsEqual(p1, p2))

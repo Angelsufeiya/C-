@@ -36,5 +36,11 @@
     <ClCompile Include="template.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="IO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="继承.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
