@@ -21,5 +21,8 @@
     <ClCompile Include="polymorphic.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="smart_ptr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

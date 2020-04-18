@@ -199,7 +199,7 @@ void PrintVTable(VFPTR vTable[])
 	cout << endl;
 }
 
-int main() {
+int main_15() {
 	Base b;
 	Derive d;
 	// 思路:取出b、d对象的头4bytes，就是虚表的指针，前面我们说了虚函数表本质是一个存虚函数指针的指针数组，
