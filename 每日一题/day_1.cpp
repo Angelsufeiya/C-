@@ -23,9 +23,14 @@
 //	 5 2 8 5 1 5 
 //	 Êä³ö
 //	 10
+#include <iostream>
+using namespace std;
 
+int main_1() {
+	cout << "hallo world!" << endl;
 
-
+	return 0;
+}
 
 
 
