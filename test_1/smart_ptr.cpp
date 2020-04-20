@@ -31,7 +31,7 @@
 //    // ...
 //}
 //
-//int main_1() {
+//int main() {
 //    try {
 //        int a[5] = { 4, 5, 2, 3, 1 };
 //        MergeSort(a, 5);
@@ -309,35 +309,164 @@
 //~ListNode()
 //~ListNode()
 
-#include <iostream>
-using namespace std;
-
-// 仿函数的删除器 
-template<class T> 
-struct FreeFunc {
-    void operator()(T* ptr)
-    {
-        cout << "free:" << ptr << endl;
-        free(ptr);
-    }
-};
-template<class T>
-struct DeleteArrayFunc {
-    void operator()(T* ptr)
-    {
-        cout << "delete[]" << ptr << endl;
-        delete[] ptr;
-    }
-};
-
-int main() {
-    FreeFunc<int> freeFunc;
-    shared_ptr<int> sp1((int*)malloc(4), freeFunc);
-    DeleteArrayFunc<int> deleteArrayFunc;
-    shared_ptr<int> sp2((int*)malloc(4), deleteArrayFunc);
-
-    return 0;
-}
+//#include <iostream>
+//using namespace std;
+//
+//// 仿函数的删除器 
+//template<class T> 
+//struct FreeFunc {
+//    void operator()(T* ptr)
+//    {
+//        cout << "free:" << ptr << endl;
+//        free(ptr);
+//    }
+//};
+//template<class T>
+//struct DeleteArrayFunc {
+//    void operator()(T* ptr)
+//    {
+//        cout << "delete[]" << ptr << endl;
+//        delete[] ptr;
+//    }
+//};
+//
+//int main_s3() {
+//    FreeFunc<int> freeFunc;
+//    shared_ptr<int> sp1((int*)malloc(4), freeFunc);
+//    DeleteArrayFunc<int> deleteArrayFunc;
+//    shared_ptr<int> sp2((int*)malloc(4), deleteArrayFunc);
+//
+//    return 0;
+//}
 
 //delete[]007904D0
 //free : 00795108
+
+//#include <iostream>
+//using namespace std;
+//
+//double Division(int a, int b)
+//{
+//    // 当b == 0时抛出异常 
+//    if (b == 0)
+//        throw "Division by zero condition!";
+//    else
+//        return ((double)a / (double)b);
+//}
+//
+//void Func() {
+//    // 这里可以看到如果发生除0错误抛出异常，另外下面的array没有得到释放。 
+//    // 所以这里捕获异常后并不处理异常，异常还是交给外面处理，这里捕获了再重新抛出去。
+//    int* array = new int[10];
+//    try {
+//        int len, time;
+//        cin >> len >> time;
+//        cout << Division(len, time) << endl;
+//    }
+//    catch (...) {
+//        cout << "delete []：" << array << endl;  // 走这里 然后跳出去找栈外的catch
+//        delete[] array;
+//        //throw;
+//    }
+//    // ...
+//    cout << "delete []" << array << endl;
+//    delete[] array;
+//}
+//
+//int main() {
+//    try {
+//        Func();
+//    }
+//    catch (const char* errmsg) {
+//        cout << errmsg << endl; // Division by zero condition!
+//    }
+//
+//    return 0;
+//}
+
+//#include <iostream>
+//using namespace std;
+
+// 服务器开发中通常使用的异常继承体系 
+//class Exception
+//{
+//protected:
+//    string _errmsg;
+//    int _id;
+//    //list<StackInfo> _traceStack;
+//    // ...
+//};
+//
+//class SqlException : public Exception
+//{};
+//class CacheException : public Exception
+//{};
+//class HttpServerException : public Exception
+//{};
+//
+//int main() {
+//    try {
+//        // server.Start();
+//        // 抛出对象都是派生类对象
+//    }
+//
+//    catch (const Exception& e) // 这里捕获父类对象就可以 
+//    {
+//    }  
+//    catch (...)
+//    {
+//        cout << "Unkown Exception" << endl;
+//    }
+//
+//    return 0;
+//}
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// 1.下面这段伪代码我们可以看到ConnnectSql中出错了，先返回给ServerStart
+// ServerStart再返回 给main函数，main函数再针对问题处理具体的错误。
+// 2.如果是异常体系，不管是ConnnectSql还是ServerStart及调用函数出错
+// 都不用检查，因为抛出的 异常异常会直接跳到main函数中catch捕获的地方，main函数直接处理错误。
+//int ConnnectSql()
+//{
+//    // 用户名密码错误 
+//    if (...)
+//        return 1;
+//    // 权限不足 
+//    if (...)
+//        return 2;
+//}
+//int ServerStart() {
+//    if (int ret = ConnnectSql() < 0)
+//        return ret; 
+//    int fd = socket(); 
+//    if (fd < 0)
+//        return errno;
+//}
+//int main() {
+//    if (ServerStart() < 0)
+//        ...
+//
+//    return 0;
+//}
+
+int main_SP() {
+    try {
+        vector<int> v(10, 5);
+        // 这里如果系统内存不够也会抛异常 
+        v.reserve(1000000000);
+        // 这里越界会抛异常
+        v.at(10) = 100;
+    }
+    catch (const exception& e) // 这里捕获父类对象就可以 
+    {
+        cout << e.what() << endl;   // bad allocation
+    }
+    catch (...) {
+        cout << "Unkown Exception" << endl;
+    }
+
+    return 0; 
+}
