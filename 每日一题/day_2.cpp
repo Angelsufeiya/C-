@@ -22,6 +22,22 @@
 
 
 
+//#include <iostream>
+//using namespace std;
+//
+//int main() {
+//	int a[] = { 1,2,3,4 }; 
+//	int* b = a;
+//	*b += 2; 
+//	*(b + 2) = 2;
+//	b++; 
+//	printf(" %d, %d\n", *b, *(b + 2));
+//
+//	return 0;
+//}
+
+
+
 //标题:倒置字符串
 //将一句话的单词进行倒置，标点不倒置。比如 I like beijing.经过函数后变为 : beijing.like I
 //

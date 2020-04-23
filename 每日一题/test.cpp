@@ -44,20 +44,20 @@ public:
 //#include <iostream>
 //using namespace std;
 
-int main_0() {
-	string s;
-	cin >> s;
-	char str[256] = { 0 };
-
-	for (int i = 0; i < s.size(); ++i) {
-		if (!str[s[i]]) {
-			cout << s[i];
-		}
-		str[s[i]] = 1;
-	}
-
-	return 0;
-}
+//int main_0() {
+//	string s;
+//	cin >> s;
+//	char str[256] = { 0 };
+//
+//	for (int i = 0; i < s.size(); ++i) {
+//		if (!str[s[i]]) {
+//			cout << s[i];
+//		}
+//		str[s[i]] = 1;
+//	}
+//
+//	return 0;
+//}
 
 //有一个排过序的数组，包含n个整数，但是这个数组向左进行了一定长度的移位，
 //例如，原数组为[1, 2, 3, 4, 5, 6]，向左移位5个位置即变成了[6, 1, 2, 3, 4, 5], 

@@ -24,22 +24,72 @@
 //	 输出
 //	 10
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
-int main_1() {
-	cout << "hallo world!" << endl;
+int main_0() {
+	int n;
 
+	while (cin >> n) {
+		int i;
+		long long sum = 0;
+		vector<int> a_i;
+		a_i.resize(3 * n);
+		for (i = 0; i < 3 * n; i++) {
+			cin >> a_i[i];
+		}
+
+		std::sort(a_i.begin(), a_i.end());
+
+		for (i = n; i < 3 * n; i += 2)
+		{
+			sum += a_i[n];
+		}
+		cout << sum << endl;
+	}
 	return 0;
 }
 
 
-
 //标题:删除公共字符
-//输入两个字符串，从第一字符串中删除第二个字符串中所有的字符。例如，输入”They are students.”和”aeiou”，则删除之后的第一个字符串变成”Thy r stdnts.”
+//输入两个字符串，从第一字符串中删除第二个字符串中所有的字符。例如，输入”They are students.”和”aeiou”，
+//则删除之后的第一个字符串变成”Thy r stdnts.”
 //输入描述 :
-//每个测试输入包含2个字符串 输出描述 : 输出删除后的字符串
+//每个测试输入包含2个字符串 
+//输出描述 : 输出删除后的字符串
 //示例1 :
 //输入
-//They are students.aeiou
+//They are students.
+//aeiou
 //输出
 //Thy r stdnts.
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+	string s1, s2;
+
+	getline(cin, s1);
+	getline(cin, s2);
+
+	// 使用哈希映射思想先str2统计字符出现的次数
+	char arr[256] = { 0 };
+
+	for (auto i : s2) {
+		arr[i] = 1;
+	}
+	string str;
+	//注意这里最好不要str1.erases(i) (因为边遍历，边erase，容易出错。)
+	for (auto i : s1) {
+		if (!arr[i]) {
+			str += i;
+		}
+	}
+
+	cout << str;
+
+	return 0;
+}
