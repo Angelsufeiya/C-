@@ -23,14 +23,42 @@
 //由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出 0。
 
 
+//#include<iostream>
+//using namespace std;
+//
+//class A {
+//public:
+//	A(char* s)
+//	{
+//		cout << s << endl;
+//	}
+//	~A() {}
+//};
+//class B :virtual public A
+//{
+//public:
+//	B(char* s1, char* s2) :A(s1) {
+//		cout << s2 << endl;
+//	}
+//};
+//class C :virtual public A
+//{
+//public:
+//	C(char* s1, char* s2) :A(s1) {
+//		cout << s2 << endl;
+//	}
+//};
+//class D :public B, public C
+//{
+//public:
+//	D(char* s1, char* s2, char* s3, char* s4) : B(s1, s2), C(s1, s3), A(s1)
+//	{
+//		cout << s4 << endl;
+//	}
+//};
+//int main() {
+//	D* p = new D("class A", "class B", "class C", "class D");
+//	delete p;
+//	return 0;
+//}
 
-#include <iostream>
-using namespace std;
-
-int main() {
-	//char a[10] = { '1','2','3','4','5','6','7','8','9',0 }, * p; 
-//	int a[][3] = { {1,0,1}, { }, {1,1} };
-	int a[][2] = { {}, { }, {} };
-	cout << a[1][0];
-	return 0;
-}

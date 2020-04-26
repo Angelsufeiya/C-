@@ -88,7 +88,7 @@ int OneCountBinary(unsigned int n){
 	return count;
 }
 
-int main___0(){
+int main_01(){
 	int input;
 	scanf("%d", &input);
 	printf("%d", OneCountBinary(input));
@@ -109,7 +109,7 @@ void reverseString(char* str, int size){
 	}
 }
 
-int main____0(){
+int main_02(){
 	char str[] = "hello";
 	int len = strlen(str);
 	
@@ -220,3 +220,28 @@ int main11() {
 	printf("%d\n", MAX_Arry(arr, len));
 	return 0;
 }
+
+#include<stdio.h> 
+
+int main_13()
+{
+	int a;
+	float b, c;
+
+	scanf("%2d%3f%4f", &a, &b, &c);
+
+	//printf("%d", printf("%d", a));
+	printf("1: a=%d,c=%f\n", a, c);
+
+	printf("2: a=%d,b=%d,c=%f\n", a, b, c);
+
+	printf("3: a=%d,b=%.0f,c=%f\n", a, b, c);
+
+	return 0;
+}
+
+
+//用户访问唯一实例的方法只有GetInstance()成员函数。
+//如果不通过这个函数，任何创建实例的尝试都将失败，因为类的构造函数是私有的。
+//GetInstance()使用 懒惰初始化，也就是说它的返回值是当这个函数首次被访问时被创建的 。
+//这是一种防弹设计——所有GetInstance()之后的调用都返回相同实例的指针
