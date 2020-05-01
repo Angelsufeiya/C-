@@ -1,6 +1,4 @@
 #include "RBTree.h"
-#include <iostream>
-using namespace std;
 
 int main()
 {
@@ -16,6 +14,21 @@ int main()
 	rbt.insert(8);
 	rbt.insert(9);
 	rbt.insert(10);
+
+	if (rbt.IsValidRBTree()) {
+		cout << "满足红黑树的性质：";
+	}
+	else {
+		cout << "不满足红黑树的性质：";
+	}
+
+	vector<int> v = rbt.InOrder();
+	for (auto& i : v)
+	{
+		cout << i << ' ';
+	}
+
+
 
 	return 0;
 }

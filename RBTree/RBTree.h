@@ -1,4 +1,8 @@
 #pragma once
+#include <stack>
+#include <vector>
+#include <iostream>
+using namespace std;
 
 namespace dg {
 
@@ -168,7 +172,7 @@ public:
 					{
 						grand = pre->m_parent;
 						uncle = grand->m_right;
-						if (uncle && uncle->m_color == RED) //第三种情况
+						if (uncle && uncle->m_color == RED) //第二种情况
 						{
 							pre->m_color = BLACK;
 							uncle->m_color = BLACK;
@@ -178,7 +182,7 @@ public:
 						}
 						else
 						{
-							if (cur == pre->m_right) //第五种情况转成第四种
+							if (cur == pre->m_right) //第三种情况转成第一种
 							{
 								lRound(pre);
 								RBTreeNode<T>* tmp;
@@ -186,7 +190,7 @@ public:
 								pre = cur;
 								cur = tmp;
 							}
-							rRound(grand);        //第四种情况
+							rRound(grand);        //第一种情况
 							pre->m_color = BLACK;
 							grand->m_color = RED;
 							break;
@@ -225,7 +229,7 @@ public:
 					}
 				}
 			}
-			//省略的else是第二种情况
+			//省略的else是第四种情况（pre->m_color == BLACK）
 		}
 		// 插入根节点（根节点不存在）
 		else 
@@ -237,8 +241,142 @@ public:
 		root->m_color = BLACK;
 		m_head->m_left = leftMost();
 		m_head->m_right = rightMost();
+		m_size++;
+
 		return true;
 	}
+
+	std::vector<T> InOrder()
+	{
+		std::stack<RBTreeNode<T>*> s;
+		std::vector<T> res;
+		RBTreeNode<T>* cur = m_head->m_parent;
+
+		while (cur || !s.empty())
+		{
+			for (; cur; cur = cur->m_left)
+			{
+				s.push(cur);
+			}
+
+			if (!s.empty())
+			{
+				cur = s.top();
+				res.push_back(cur->m_data);
+				s.pop();
+
+				cur = cur->m_right;
+			}
+		}
+
+		return res;
+	}
+
+	bool IsValidRBTree()
+	{
+		RBTreeNode<T>* pRoot = getRoot();
+		
+		// 空树也是红黑树
+		if (nullptr == pRoot)
+			return true;
+
+		// 检测根节点是否满足情况
+		if (BLACK != pRoot->m_color) {
+			cout << "违反红黑树性质二:根节点必须为黑色" << endl;
+			return false;
+		}
+
+		// 获取任意一条路径中黑色节点的个数 
+		size_t blackCount = 0;
+		RBTreeNode<T>* pCur = pRoot;
+		while (pCur)
+		{
+			if (BLACK == pCur->m_color)
+				blackCount++;
+			pCur = pCur->m_left;
+		}
+		// 检测是否满足红黑树的性质，k用来记录路径中黑色节点的个数 
+		size_t k = 0;
+		return _IsValidRBTree(pRoot, k, blackCount);
+	}
+	bool _IsValidRBTree(RBTreeNode<T>* pRoot, size_t k, const size_t blackCount)
+	{
+		//走到null之后，判断k和black是否相等 
+		if (nullptr == pRoot)
+		{
+			if (k != blackCount)
+			{
+				cout << "违反性质四:每条路径中黑色节点的个数必须相同" << endl;
+				return false;
+			}
+			return true;
+		}
+
+		// 统计黑色节点的个数
+		if (BLACK == pRoot->m_color)
+			k++;
+
+		// 检测当前节点与其双亲是否都为红色
+		RBTreeNode<T>* pParent = pRoot->m_parent;
+		if (pParent && RED == pParent->m_color && RED == pRoot->m_color) {
+			cout << "违反性质三:没有连在一起的红色节点" << endl;
+			return false;
+		}
+		return _IsValidRBTree(pRoot->m_left, k, blackCount) && 
+			   _IsValidRBTree(pRoot->m_right, k, blackCount);
+	}
+
+	// 找迭代器的下一个节点，下一个节点肯定比其大
+	RBTreeNode<T>* increasement(RBTreeNode<T>* cur)
+	{
+		RBTreeNode<T>* tmp = cur;
+		if (cur->m_right)
+		{
+			// 右子树中最小的节点，即右子树中最左侧节点
+			tmp = cur->m_right;
+			for (; tmp->m_left; tmp = tmp->m_left);
+		}
+		else
+		{
+			// 右子树不存在，向上查找
+			tmp = tmp->m_parent;
+			for (; cur != tmp->m_left && tmp != m_head; tmp = tmp->m_parent)
+			{
+				cur = tmp;
+			}
+			// tmp 为根节点并且没右子树
+			if (tmp == m_head)
+			{
+				return nullptr;
+			}
+		}
+		return tmp;
+	}
+
+	// 获取迭代器指向节点的前一个节点
+	RBTreeNode<T>* decreasement(RBTreeNode<T>* cur)
+	{
+		RBTreeNode<T>* tmp = cur;
+		if (cur->m_left)
+		{
+			tmp = cur->m_left;
+			for (; tmp->m_right; tmp = tmp->m_right);
+		}
+		else
+		{
+			tmp = tmp->m_parent;
+			for (; cur != tmp->m_right && tmp != m_head; tmp = tmp->m_parent)
+			{
+				cur = tmp;
+			}
+			if (tmp == m_head)
+			{
+				return nullptr;
+			}
+		}
+		return tmp;
+	}
+
 };
 
 };
