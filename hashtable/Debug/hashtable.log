@@ -1,0 +1,16 @@
+﻿  HashMap.h
+  main.cpp
+C:\Users\Apple\Source\Repos\hashtable\hashtable\hashTable.h(86,45): warning C4244: “参数”: 从“__int64”转换到“const unsigned int”，可能丢失数据
+C:\Users\Apple\Source\Repos\hashtable\hashtable\hashTable.h(82): message : 在编译 类 模板 成员函数“void dg::hashTable<std::string,int,dg::dealString>::reserve(void)”时
+C:\Users\Apple\Source\Repos\hashtable\hashtable\hashTable.h(104): message : 查看对正在编译的函数 模板 实例化“void dg::hashTable<std::string,int,dg::dealString>::reserve(void)”的引用
+C:\Users\Apple\Source\Repos\hashtable\hashtable\main.cpp(25): message : 查看对正在编译的 类 模板 实例化“dg::hashTable<std::string,int,dg::dealString>”的引用
+  main_1.cpp
+C:\Users\Apple\Source\Repos\hashtable\hashtable\hashMap.h(56,62): warning C4244: “参数”: 从“__int64”转换到“const unsigned int”，可能丢失数据
+C:\Users\Apple\Source\Repos\hashtable\hashtable\hashMap.h(52): message : 在编译 类 模板 成员函数“void HashSet<int,dealInt>::checkCapacity(void)”时
+C:\Users\Apple\Source\Repos\hashtable\hashtable\hashMap.h(75): message : 查看对正在编译的函数 模板 实例化“void HashSet<int,dealInt>::checkCapacity(void)”的引用
+C:\Users\Apple\Source\Repos\hashtable\hashtable\main_1.cpp(7): message : 查看对正在编译的 类 模板 实例化“HashSet<int,dealInt>”的引用
+C:\Users\Apple\Source\Repos\hashtable\hashtable\hashMap.h(170,35): warning C4244: “return”: 从“__int64”转换到“size_t”，可能丢失数据
+C:\Users\Apple\Source\Repos\hashtable\hashtable\hashMap.h(169): message : 在编译 类 模板 成员函数“size_t HashSet<int,dealInt>::capacity(void)”时
+C:\Users\Apple\Source\Repos\hashtable\hashtable\hashMap.h(53): message : 查看对正在编译的函数 模板 实例化“size_t HashSet<int,dealInt>::capacity(void)”的引用
+  正在生成代码...
+  hashtable.vcxproj -> C:\Users\Apple\Source\Repos\hashtable\Debug\hashtable.exe
