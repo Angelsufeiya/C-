@@ -7,3 +7,31 @@
 //   ²âÊÔÑùÀı:"(()())", 6 	·µ»Ø : true
 //	²âÊÔÑùÀı : "()a()()", 7	·µ»Ø : false
 //	   ²âÊÔÑùÀı : "()(()()", 7	·µ»Ø : false
+
+#include <iostream>
+#include <stack>
+using namespace std;
+
+class Parenthesis {
+public:
+    bool chkParenthesis(string A, int n) {
+        stack<char> st;
+
+        for (auto i : A) {
+            if (i != ')') {
+                st.push(i);
+            }
+            else if (i == ')') {
+                if (st.top() != '(') {
+                    return false;
+                }
+                else {
+                    st.pop();
+                }
+            }
+            else
+                return false;
+        }
+        return true;
+    }
+};

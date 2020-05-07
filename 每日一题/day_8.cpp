@@ -17,10 +17,64 @@
 //	   bbb
 //	   输出
 //	   both
-//
-//
-//
-//
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main_1() {
+	int n;
+	cin >> n;
+
+	vector<string> v;
+	v.resize(n);
+	for (auto &str : v) {
+		cin >> str;
+	}
+
+	bool lenSym = true, lexSym = true;
+	// 比较长度
+	for (int i = 1; i < n; ++i) {
+		if (v[i].size() < v[i - 1].size()) {
+			lenSym = false;
+			break;
+		}
+	}
+
+	// 比较ASCII码
+	for (size_t i = 1; i < v.size(); ++i) {
+		if (v[i - 1] >= v[i])
+		{
+			lexSym = false;
+			break;
+		}
+	}
+
+	if (lenSym && lexSym)
+		cout << "both" << endl;
+	else if (!lenSym && lexSym)
+		cout << "lexicographically" << endl;
+	else if (lenSym && !lexSym)
+		cout << "lengths" << endl;
+	else if (!lenSym && !lexSym)
+		cout << "none" << endl;
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //   标题 : 求最小公倍数 | 时间限制 : 1秒 | 内存限制 : 32768K
 //		正整数A和正整数B 的最小公倍数是指 能被A和B整除的最小的正整数值，设计一个算法，求输入A和B的最小 公倍数。
 //	输入描述 : 输入两个正整数A和B。
@@ -30,3 +84,25 @@
 //5  7
 //输出
 //35
+
+#include<iostream>
+using namespace std;
+
+int gcd(int a, int b)
+{
+	int r;
+	while (r = a % b) {
+		a = b;
+		b = r;
+	}
+	return b;
+}
+
+int main()
+{
+	int a, b;
+	while (cin >> a >> b) {
+		cout << a * b / gcd(a, b) << endl;
+	}
+	return 0;
+}

@@ -14,8 +14,91 @@
 //输出
 //4
 
+#include<iostream>
+#include<vector>
+using namespace std;
 
+int main_1(){
+	int W, H, res = 0;
+	cin >> W >> H;	// H 表示行， W 表示列
 
+	// 直接暴力计算，默认所有蛋糕的位置标记成1,不能放的地方标记成0
+	vector<vector<int>> vv;
+	vv.resize(H);
+	for (auto& e : vv)
+		e.resize(W, 1);
+
+	for (int i = 0; i < H; i++)
+	{
+		for (int j = 0; j < W; j++)
+		{
+			if (vv[i][j] == 1)
+			{
+				res++;
+				// 标记不能放蛋糕的位置 
+				if ((i + 2) < H)
+					vv[i + 2][j] = 0;
+				if ((j + 2) < W)
+					vv[i][j + 2] = 0;
+			}
+		}
+	}
+	cout << res;
+	
+	return 0;
+}
+
+// 默认所有蛋糕的位置标记成1,不能放的地方标记成0 
+// 1 1 0 0 1 1
+// 1 1 0 0 1 1
+// 0 0 1 1 0 0
+// 0 0 1 1 0 0
+
+#include <iostream>
+using namespace std;
+
+int main_2()
+{
+	int a, b;
+
+	cin >> a >> b;
+
+	int x, y;
+
+	int suba = 4 - (a % 4 ? a % 4 : 4);	// 长差 suba 为4的倍数
+	int subb = 4 - (b % 4 ? b % 4 : 4);	// 宽差 subb 为4的倍数
+	x = a + suba;	// 使 x 在加上suba后为4的倍数
+	y = b + subb;	// 使 y 在加上subb后为4的倍数
+
+	int sum = x * y / 2;	// 计算长宽都扩容至4的倍数后sum的大小
+
+	sum -= suba * (x / 2) + subb * (y / 2);	// 减去增容的长与宽的一半，但这样会造成多减去蛋糕数量
+
+	if (suba == 0 || subb == 0)	// 长或者宽只要有一个是4的倍数，经过上面算式后，可直接输出
+	{
+		//do nothing
+	}
+	else if (suba == 1 && subb == 1)
+	{
+		sum++;	// 示例 长宽皆为3，
+	}
+	else if (suba == 1 || subb == 1)
+	{
+		sum += 2;	// 示例 长3，宽2
+	}
+	else if (suba == 3 && subb == 3)
+	{
+		sum += 5;	// 示例 长1，宽1
+	}
+	else 
+	{
+		sum += 4;
+	}
+
+	cout << sum;
+
+	return 0;
+}
 
 
 
@@ -34,3 +117,49 @@
 //输出
 //2147483647
 //0
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Solution {
+public:
+	int StrToInt(string str) {
+		if (str.empty())
+			return 0;
+
+		int symbol;
+		if (str[0] == '+') {
+			symbol = 1;
+			str[0] = '0';
+		}
+
+		if (str[0] == '-') {
+			symbol = -1;
+			str[0] = '0';
+		}
+
+		int res = 0;
+		if (str[0] >= '0' && str[0] <= '9') {
+			for (auto e : str) {
+				if (e < '0' || e > '9') {
+					return 0;
+				}
+				else {
+					res = res * 10 + e - '0';
+				}
+			}
+		}
+
+		return symbol * res;
+	}
+};
+
+int main_3() {
+	Solution s;
+	string ss;
+	cin >> ss;
+	s.StrToInt(ss);
+
+	return 0;
+}

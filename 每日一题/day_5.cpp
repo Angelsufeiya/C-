@@ -24,6 +24,36 @@
 //输出
 //2
 
+#include <iostream>
+using namespace std;
+
+bool IsCircleText(const string& s) {
+	size_t begin = 0;
+	size_t end = s.size() - 1;
+	for (; begin < end; begin++,end--) {
+		if (s[begin] != s[end]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+int main_51() {
+	string str1, str2;
+	int count = 0;
+	cin >> str1 >> str2;
+
+	for (int i = 0; i <= str1.size(); i++) {
+		string str = str1;
+		str.insert(i, str2);
+		if (IsCircleText(str))
+			count++;
+	}
+	cout << count << endl;
+
+	return 0;
+}
+
 
 
 
@@ -41,3 +71,35 @@
 //3 -1 2 1
 //输出
 //3
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<int> array;
+    array.resize(n);
+    for (int i = 0; i < n; i++) {
+        cin >> array[i];
+    }
+
+    int sum = array[0];    //用来累加
+    int tmp = array[0];    //用来记录最大子数组
+
+    for (size_t i = 1; i < array.size(); i++) {
+        if (sum >= 0) {
+            sum += array[i];
+        }
+        else {
+            sum = array[i];
+        }
+        if (sum > tmp) {
+            tmp = sum;
+        }
+    }
+    cout << tmp;
+
+    return 0;
+}
