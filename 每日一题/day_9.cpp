@@ -4,9 +4,33 @@
 //	1, 2
 //返回 : 3
 //
-//	 ```cpp
-//
-//	 ```
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	int A, B;
+	cin >> A >> B;
+
+	cout << A + B << endl;
+
+	int res;
+	if (A < B) {
+		int tmp = A;
+		A = B;
+		B = tmp;
+	}
+
+	while (A) {
+		if (A & 1) {
+			res << 1;
+		}
+		A >> 1;
+	}
+	return 0;
+}
+
+
 //
 // 标题:201301 JAVA 题目2 - 3级
 //	请编写一个函数(允许增加子函数)，计算n x m的棋盘格子(n为横向的格子数，m为竖向的格子数)沿着各 自边缘线从左上角走到右下角，总共有多少种走法，要求不能走回头路，即 : 只能往右和往下走，不能往左 和往上走。
