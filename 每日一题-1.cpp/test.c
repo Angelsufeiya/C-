@@ -112,7 +112,7 @@ void ModifyString(char* pText)
     }
 }
 
-int main()
+int main_000()
 {
     char text[32] = "XYBCDCBABABA";
     ModifyString(text);
