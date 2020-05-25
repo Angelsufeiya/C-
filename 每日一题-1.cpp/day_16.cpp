@@ -27,6 +27,45 @@
 //   输出完全数的个数
 //   示例1 : 输入 1000 输出 3
 //
+#include <iostream>
+using namespace std;
+
+bool IsPerfect(int n) {
+	int sum = 0;
+	
+	for (int i = 2; i < sqrt(n); i++) {
+		if (n % i == 0) {
+			sum += i + n / i;
+		}
+	}
+	sum += 1;
+
+	return sum == n;
+}
+
+int Count(int n) {
+	int count = 0;
+	if ((n < 0) | (n > 500000))
+		return -1;
+	else {
+		for (int i = 2; i <= n; i++) {
+			if (IsPerfect(i)) {
+				++count;
+			}
+		}
+	}
+	return count;
+}
+
+int main_16() {
+	int n;
+	while (cin >> n) {
+		cout << Count(n) << endl;
+	}
+	return 0;
+}
+
+
 //
 //
 //	 标题 : 扑克牌大小
@@ -48,3 +87,12 @@
 //	   4 4 4 4 - joker JOKER
 //	   输出
 //	   joker JOKER
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+
+	return 0;
+}
