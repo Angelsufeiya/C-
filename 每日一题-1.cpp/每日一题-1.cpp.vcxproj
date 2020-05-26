@@ -79,7 +79,9 @@
     <ClCompile Include="day_15.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="day_16.cpp" />
+    <ClCompile Include="day_16.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="day_17.cpp" />
     <ClCompile Include="day_18.cpp" />
     <ClCompile Include="day_19.cpp" />
