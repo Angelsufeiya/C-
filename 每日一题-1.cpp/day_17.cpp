@@ -14,6 +14,61 @@
 //	   输出 3
 //
 //
+
+
+#if 0
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+void (*PF)();
+int main()
+{
+	auto f1 = [] {cout << "hello world" << endl; };
+	auto f2 = [] {cout << "hello world" << endl; };
+	// 此处先不解释原因，等lambda表达式底层实现原理看完后，大家就清楚了 
+	//f1 = f2; // 编译失败--->提示找不到operator=()
+	// 允许使用一个lambda表达式拷贝构造一个新的副本
+	auto f3(f2);
+	f3();
+	// 可以将lambda表达式赋值给相同类型的函数指针 
+	PF = f2;
+	PF();
+
+	cout << typeid(f1).name() << endl;	// class <lambda_1ec5592de10118e452907b5329e9d8fb>
+	cout << typeid(f2).name() << endl;	// class <lambda_6c39677baa7253626f0848c76a9ffef5>
+	cout << typeid(f3).name() << endl;	// class <lambda_6c39677baa7253626f0848c76a9ffef5>
+	cout << typeid(PF).name() << endl;	// void(__cdecl*)(void)
+
+	return 0;
+}
+
+#endif
+
+#include <iostream>
+#include <thread>
+using namespace std;
+
+void func(int i, int j)
+{
+	cout << "I am thread." << i << ' ' << j << endl;
+}
+
+int main()
+{
+	thread t1(func, 2, 5);
+	thread t2(func, 3, 8);
+
+	t1.join();
+	t2.join();
+
+	cout << "I am main thread." << endl;
+	return 0;
+}
+
+
 //
 //
 //
