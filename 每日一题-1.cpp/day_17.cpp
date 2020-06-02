@@ -13,7 +13,30 @@
 //   输入 4
 //	   输出 3
 //
-//
+// 
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+	int n;
+	while (cin >> n) {
+		int m = 2 * n + 1;
+		vector<vector<int>> dp(n, vector<int>(m, 0));
+		dp[0][0] = 1;
+
+		for (int i = 1; i < n; i++) {
+			dp[i][0] = 1;
+			
+		}
+
+	}
+
+
+	return 0;
+
+
 
 
 #if 0
@@ -51,6 +74,7 @@ int main()
 #include <thread>
 using namespace std;
 
+#if 0
 void func(int i, int j)
 {
 	cout << "I am thread." << i << ' ' << j << endl;
@@ -68,6 +92,115 @@ int main()
 	return 0;
 }
 
+
+int main()
+{
+	int n1 = 500;
+	int n2 = 600;
+
+	thread t([&](int addNum) {
+		n1 += addNum;
+		n2 += addNum;
+		}, 500);
+	t.join();
+
+	std::cout << n1 << ' ' << n2 << std::endl;	// 1000 1100
+	return 0;
+}
+
+
+void foo() {
+	this_thread::sleep_for(std::chrono::seconds(1));
+}
+
+int main() {
+	thread t(foo);
+	cout << "before join, joinable=" << t.joinable() << std::endl;
+
+	t.join();
+	cout << "after join, joinable=" << t.joinable() << endl;
+	return 0;
+}
+
+#include <iostream>
+using namespace std;
+#include <thread>
+
+unsigned long sum = 0L;
+
+void fun(size_t num)
+{
+	for (size_t i = 0; i < num; ++i)
+		sum++;
+}
+int main() {
+	cout << "Before joining,sum = " << sum << std::endl;	// 0
+
+	thread t1(fun, 10000000);
+	thread t2(fun, 10000000);
+	t1.join();
+	t2.join();
+
+	cout << "After joining,sum = " << sum << std::endl;		// 20000000
+	return 0;
+}
+
+
+#include <iostream>
+using namespace std;
+#include <thread>
+#include <mutex>
+std::mutex m;
+
+unsigned long sum = 0L;
+
+void fun(size_t num)
+{
+	for (size_t i = 0; i < num; ++i)
+	{
+		m.lock();
+		sum++;
+		m.unlock();
+	}
+}
+
+int main() {
+	cout << "Before joining,sum = " << sum << std::endl;// 0
+
+	thread t1(fun, 10000000);
+	thread t2(fun, 10000000);
+	t1.join();
+	t2.join();
+
+	cout << "After joining,sum = " << sum << std::endl;	// 20000000
+	return 0;
+}
+
+#include <iostream>
+using namespace std;
+#include <thread>
+#include <atomic>
+
+atomic_long sum{ 0 };
+
+void fun(size_t num)
+{
+	for (size_t i = 0; i < num; ++i)
+		sum++; // 原子操作
+}
+
+int main() {
+	cout << "Before joining, sum = " << sum << std::endl;	// 0
+
+	thread t1(fun, 1000000);
+	thread t2(fun, 1000000);
+	t1.join();
+	t2.join();
+
+	cout << "After joining, sum = " << sum << std::endl;	// 2000000
+	return 0;
+}
+#endif
 
 //
 //
