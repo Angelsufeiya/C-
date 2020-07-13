@@ -15,6 +15,204 @@
 //
 // 
 
+
+
+
+
+
+//   标题:超长正整数相加
+//	 请设计一个算法完成两个超长正整数的加法。
+//	  接口说明
+//	  /*
+//	  请设计一个算法完成两个超长正整数的加法。 输入参数:
+//	  String addend:加数
+//	  String augend:被加数
+//	  返回值:加法结果
+//	  */
+//	  public String AddLongInteger(String addend, String augend) {
+//		  /*在这里实现功能*/
+//		  return null;
+//	  }
+//输入描述:
+//   输入两个字符串数字
+//   输出描述 : 输出相加后的结果，string型
+//	  示例1 :
+//   输入 99999999999999999999999999999999999999999999999999 1
+//	   输出
+//	   100000000000000000000000000000000000000000000000000
+
+
+
+
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Solution {
+	void HeapAdjustDown(vector<int>& arr, int start, int end) {
+		int temp = arr[start];
+		int i = start * 2 + 1;
+		while (i <= end) {
+			if (i + 1 <= end && arr[i + 1] < arr[i]) {
+				i++;
+			}
+			if (arr[i] > temp) {
+				break;
+			}
+			arr[start] = arr[i];
+			start = i;
+			i = start * 2 + 1;
+		}
+		arr[start] = temp;
+	}
+public:
+	vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
+		vector<int> result;
+		if (input.size() == 0 || k == 0 || k > input.size()) {
+			return result;
+		}
+
+		int len = input.size();
+		// 初始化堆
+		for (int i = len / 2 - 1; i >= 0; i--) {
+			HeapAdjustDown(input, i, len - 1);
+		}
+		for (; k > 0; k--) {
+			result.push_back(input[0]);
+			int temp = input[len - 1];
+			input[len - 1] = input[0];
+			input[0] = temp;
+
+			len--;
+			//将arr[0...i-1]重新调整为最大堆
+			HeapAdjustDown(input, 0, len - 1);
+		}
+		return result;
+	}
+};
+
+int main() {
+	Solution s;
+	int n, k;
+	cin >> n >> k;
+	vector<int> v, re;
+	v.resize(n);
+	for (int i = 0; i < n; i++) {
+		cin >> v[i];
+	}
+	re = s.GetLeastNumbers_Solution(v, k);
+	for (int i = 0; i < re.size(); i++) {
+		cout << re[i] << ',';
+	}
+	return 0;
+}
+
+
+
+
+#if 0
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+bool Isprime(int n) {
+	int i;
+	for (i = 2; i <= sqrt(n); i++) {
+		if (!(n % i)) {
+			return false;
+		}
+	}
+	return true;
+}
+
+int main() {
+	int input, flag = 0;
+	while (cin >> input) {
+		for (int i = 2; i < input; i++) {
+			if (i % 10 == 1) {
+				if (Isprime(i)) {
+					cout << i << ' ';
+					flag = 1;
+				}
+			}
+		}
+		if (!flag) {
+			cout << "-1";
+		}
+	}
+	return 0;
+}
+#endif
+
+#if 0
+#include <iostream>
+using namespace std;
+
+union tmp {
+	int a;
+	char b;	// b 就是 a[0]
+}tmp;
+
+int main() {
+	tmp.a = 1;
+	if (tmp.b == 1) {
+		cout << "计算机是小端字节序\n";
+	}
+	else {
+		cout << "计算机是大端字节序\n";
+	}
+	return 0;
+}
+#endif
+
+#if 0
+#include <iostream>
+using namespace std;
+
+//凯撒密码加密解密算法（解密其实就是对加密过程中的密钥取负号，再次加密）
+void KaiSa(char* str, int k) {
+	while (*str) {
+		if ((*str + k <= 'z' && *str + k >= 'a') && (*str <= 'z' && *str >= 'a')) {
+			*str++ = *str + k;
+		}
+		else if ((*str + k <= 'Z' && *str + k >= 'A') && (*str <= 'Z' && *str >= 'A')) {
+			*str++ = *str + k;
+		}
+		else if (k >= 0) {
+			*str++ = *str + k - 26;
+		}
+		else if (k < 0) {
+			*str++ = *str + k + 26;
+		}
+	}
+}
+
+int main() {
+	char array[1000] = { 0 };
+	int k;
+
+	cout << "请输入您想要加密的凯撒密码:\n";
+	cin >> array;
+	cout << "请输入您设置凯撒密码的移位间隔：\n";
+	cin >> k;
+
+	if (k > 25 || k < -25) {
+		k %= 26;
+	}
+	KaiSa(array, k);
+	cout << "进行凯撒加密后的密码为：\n";
+	cout << array << endl;
+	KaiSa(array, -k);
+	cout << "进行凯撒解密后的密码为：\n";
+	cout << array << endl;
+
+	return 0;
+}
+#endif
+
+#if 0
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -33,10 +231,7 @@ int main(){
 
 	}
 
-
-	return 0;
-
-
+#endif
 
 
 #if 0
@@ -202,26 +397,3 @@ int main() {
 }
 #endif
 
-//
-//
-//
-//   标题:超长正整数相加
-//	 请设计一个算法完成两个超长正整数的加法。
-//	  接口说明
-//	  /*
-//	  请设计一个算法完成两个超长正整数的加法。 输入参数:
-//	  String addend:加数
-//	  String augend:被加数
-//	  返回值:加法结果
-//	  */
-//	  public String AddLongInteger(String addend, String augend) {
-//		  /*在这里实现功能*/
-//		  return null;
-//	  }
-//输入描述:
-//   输入两个字符串数字
-//   输出描述 : 输出相加后的结果，string型
-//	  示例1 :
-//   输入 99999999999999999999999999999999999999999999999999 1
-//	   输出
-//	   100000000000000000000000000000000000000000000000000
