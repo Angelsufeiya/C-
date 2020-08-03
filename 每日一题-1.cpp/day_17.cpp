@@ -15,11 +15,43 @@
 //
 // 
 
-#include <iostream>
-using namespace std;
-int main() {
-
-}
+//#include <iostream>
+//#include <vector>
+//using namespace std;
+//int main() {
+//	int n, len;
+//	while (cin >> n) {
+//		len = 2 * n - 1;
+//		vector<vector<int>> dp(n, vector<int>(len, 0));
+//		dp[0][0] = 1;
+//		for (int i = 1; i < n; i++) {
+//			//第一列和最后一列都为1
+//			dp[i][0] = dp[i][2*i] = 1;
+//
+//			for (int j = 1; j < 2*i; j++) {
+//				if (j == 1) {
+//					// 第二列，只是前两个元素之和
+//					dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];
+//				}
+//				else {
+//					// 第i,j元素等于上一行第j - 2,j - 1,j三列元素之和
+//					dp[i][j] = dp[i - 1][j - 2] + dp[i - 1][j - 1] + dp[i - 1][j];
+//				}
+//			}
+//		}
+//
+//		int k;
+//		for (k = 0; k < len; k++) {
+//			if (dp[n - 1][k] % 2 == 0 && dp[n - 1][k] != 0) {
+//				cout << k + 1 << endl;
+//				break;
+//			}
+//		}
+//		if (k == len)
+//			cout << -1 << endl;
+//	}
+//	return 0;
+//}
 
 //题目描述：
 //给出你n条长度不一的边，请你从中选择四条边，组成一个最大的平行四边形。
@@ -90,74 +122,74 @@ int main() {
 
 
 
-输/*入描述
+/*输入描述
 输入第一行包含一个正整数n ，表示序列的长度。(1 <= n <= 100000)
 
 接下来一行有n个正整数，表示序列中的n个元素，中间用空格隔开。(1 <= a_i <= n)
 
 输出描述
 输出仅包含一个整数，表示最少的操作次数。*/
-#include <iostream>
-#include <vector>
-using namespace std;
+//#include <iostream>
+//#include <vector>
+//using namespace std;
+//
+//void getCount(vector<int> v) {
+//	int count = 0;
+//	while (1) {
+//		int flag = 1;
+//		for (int i = 0; i < v.size() - 1; i++) {
+//			if (v[i] > v[i + 1]) {
+//				int tmp = v[0];
+//				v[0] = v[i + 1];
+//				v[i + 1] = tmp;
+//				count++;
+//				flag = 0;
+//				break;
+//			}
+//		}
+//		if (flag)
+//			break;
+//	}
+//	cout << count;
+//}
+//
+//int main() {
+//	int n;
+//	while (cin >> n) {
+//		vector<int> v;
+//		v.resize(n);
+//		int num;
+//		for (int i = 0; i < n; i++) {
+//			cin >> num;
+//			v[i] = num;
+//		}
+//		getCount(v);
+//	}
+//
+//	return 0;
+//}
 
-void getCount(vector<int> v) {
-	int count = 0;
-	while (1) {
-		int flag = 1;
-		for (int i = 0; i < v.size() - 1; i++) {
-			if (v[i] > v[i + 1]) {
-				int tmp = v[0];
-				v[0] = v[i + 1];
-				v[i + 1] = tmp;
-				count++;
-				flag = 0;
-				break;
-			}
-		}
-		if (flag)
-			break;
-	}
-	cout << count;
-}
-
-int main() {
-	int n;
-	while (cin >> n) {
-		vector<int> v;
-		v.resize(n);
-		int num;
-		for (int i = 0; i < n; i++) {
-			cin >> num;
-			v[i] = num;
-		}
-		getCount(v);
-	}
-
-	return 0;
-}
-
-题目描述：
-在一个2D横版游戏中，所有的怪物都是在X轴上的，每个怪物有两个属性X和HP，分别代表怪物的位置和生命值。
-
-玩家控制的角色有一个AOE（范围攻击）技能，玩家每次释放技能可以选择一个位置x，技能会对[x - y, x + y]范围内的所有怪物造成1点伤害，请问，玩家最少需要使用多少次技能，才能杀死所有怪物，怪物血量清0即视为被杀死。
-
-输入描述
-输入第一行包含一个两个正整数n和y，分别表示怪物的数量和技能的范围。（1 <= n <= 100000）
-
-接下来有n行，每行有两个正整数x和hp分别表示一只怪物的位置和血量。(1 <= x, hp <= 10 ^ 9)
-
-输出描述
-输出仅包含一个整数，表示最少使用的技能次数。
-
-
-样例输入
-3 5
-1 10
-10 5
-22 3
-样例输出
-13
+//题目描述：
+//在一个2D横版游戏中，所有的怪物都是在X轴上的，每个怪物有两个属性X和HP，分别代表怪物的位置和生命值。
+//
+//玩家控制的角色有一个AOE（范围攻击）技能，玩家每次释放技能可以选择一个位置x，技能会对[x - y, x + y]范围内的所有怪物造成1点伤害，请问，玩家最少需要使用多少次技能，才能杀死所有怪物，怪物血量清0即视为被杀死。
+//
+//输入描述
+//输入第一行包含一个两个正整数n和y，分别表示怪物的数量和技能的范围。（1 <= n <= 100000）
+//
+//接下来有n行，每行有两个正整数x和hp分别表示一只怪物的位置和血量。(1 <= x, hp <= 10 ^ 9)
+//
+//输出描述
+//输出仅包含一个整数，表示最少使用的技能次数。
+//
+//
+//样例输入
+//3 5
+//1 10
+//10 5
+//22 3
+//样例输出
+//13
 
 
 
@@ -181,8 +213,44 @@ int main() {
 //   输入 99999999999999999999999999999999999999999999999999 1
 //	   输出
 //	   100000000000000000000000000000000000000000000000000
-
-
+//
+//#include <string>
+//#include <iostream>
+//#include <algorithm>
+//using namespace std;
+//
+//string addStrings(string s1, string s2) {
+//	int i = s1.size() - 1;
+//	int j = s2.size() - 1;
+//	string result = "";
+//
+//	// 当前位相加的结果
+//	int add = 0;
+//	while (i >= 0 || j >= 0) {
+//		if (i >= 0) {
+//			add += s1[i] - '0';
+//		}
+//		if (j >= 0) {
+//			add += s2[j] - '0';
+//		}
+//		// 当前位最大值不能大于0；
+//		result += (char)(add % 10 + '0');
+//		// 如果大于10，进1
+//		add /= 10;
+//		i--, j--;
+//	}
+//	//整体逆置
+//	reverse(result.begin(), result.end());
+//	return result;
+//}
+//
+//int main() {
+//	string str1, str2;
+//	while (cin >> str1 >> str2) {
+//		cout << addStrings(str1, str2) << endl;
+//	}
+//	return 0;
+//}
 
 
 #if 0
