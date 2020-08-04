@@ -1,2 +1,4 @@
-﻿  day_17.cpp
-  每日一题-1.cpp.vcxproj -> C:\Users\Apple\Source\Repos\Angelsufeiya\C_Practice\Debug\每日一题-1.cpp.exe
+﻿  day_19.cpp
+  test.cpp
+  正在生成代码...
+C:\Users\Apple\Source\Repos\Angelsufeiya\C_Practice\每日一题-1.cpp\day_19.cpp(53): error C4716: “bestLongString”: 必须返回一个值

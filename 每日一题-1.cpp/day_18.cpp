@@ -16,10 +16,33 @@
 //   输入 9
 //	   输出 34
 //
-//
-//
-//
-//   标题 : 字符串通配符
+
+#if 0
+#include <iostream>
+using namespace std;
+
+int main() {
+	int month;
+	while (cin >> month) {
+		int first = 1;
+		int second = 1;
+		int result;
+		for (int i = 3; i <= month; ++i) {
+			result = first + second;
+			second = first;
+			first = result;
+		}
+
+		cout << result << endl;
+	}
+
+	return 0;
+}
+
+#endif
+
+
+//标题 : 字符串通配符
 //	问题描述 : 在计算机中，通配符一种特殊语法，广泛应用于文件搜索、数据库、正则表达式等领域。现要求 各位实现字符串通配符的算法。
 //	   要求 :
 //实现如下2个通配符 :
@@ -39,3 +62,46 @@
 //			  txt12.xls
 //			  输出
 //			  false
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool match(const char* s1, const char* s2) {
+	//当前字符结束，返回true
+	if (*s1 == '\0' && *s2 == '\0') {
+		return true;
+	}
+	//两个字符串有一个先结束，则返回false
+	if (*s1 == '\0' || *s2 == '\0') {
+		return false;
+	}
+
+	//遇到?号，匹配一个字符，跳过一个位置
+	if (*s1 == '?') {
+		return match(s1 + 1, s2 + 1);
+	}
+	// 遇到*号，匹配0个(str不挪动)，1个(两者都向前挪动一个字符)或多个(str向前挪动一个字符)
+	else if (*s1 == '*') {
+		return match(s1 + 1, s2) || match(s1 + 1, s2 + 1) || match(s1, s2 + 1);
+	}
+	else {
+		if (*s1 == *s2)
+			match(s1 + 1, s2 + 1);
+		else
+			return false;
+	}
+}
+
+int main() {
+	string str1, str2;
+	while (cin >> str1 >> str2) {
+		bool ret = match(str1.c_str(), str2.c_str());
+		if (ret) {
+			cout << "true" << endl;
+		}
+		else
+			cout << "false" << endl;
+	}
+	return 0;
+}
