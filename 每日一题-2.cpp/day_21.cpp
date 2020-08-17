@@ -326,7 +326,7 @@ int main() {
 #endif
 
 
-
+#if 0
 #include <iostream>
 #include <string>
 using namespace std;
@@ -381,5 +381,6 @@ int main() {
     while (cin >> s1 >> s2) {
         cout << sub_strings(s1, s2) << endl;
     }
-    
+    return 0;
 }
+#endif

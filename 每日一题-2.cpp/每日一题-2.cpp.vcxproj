@@ -66,6 +66,7 @@
   <ItemGroup>
     <ClCompile Include="day_20.cpp" />
     <ClCompile Include="day_21.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
