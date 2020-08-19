@@ -333,3 +333,48 @@ int main() {
 }
 
 #endif
+
+#if 0
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+	A() { g(); }
+	~A() { cout << "~A::A() "; }
+	void f() { cout << "A::f() "; }
+	virtual void g() { cout << "A::g() "; }
+};
+class B : public A {
+public:
+	B() { g(); }
+	~B() { cout << "~B::A() "; }
+	void f() { cout << "B::f() "; }
+	void g() { cout << "B::g() "; }
+};
+
+int main() {
+	A* p = new B;
+	p->f();
+	p->g();
+	delete p;
+	return 0;
+}
+#endif
+
+
+#include <iostream>
+using namespace std;
+
+class Dummy {
+public:
+	void print() {
+		cout << "hello world" << endl;
+	}
+};
+
+int main() {
+	Dummy* a;
+	a->print();
+	return 0;
+}
