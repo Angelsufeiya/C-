@@ -362,7 +362,7 @@ int main() {
 }
 #endif
 
-
+#if 0
 #include <iostream>
 using namespace std;
 
@@ -378,3 +378,119 @@ int main() {
 	a->print();
 	return 0;
 }
+#endif
+
+#if 0
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int Ridnum(int num, int n) {
+	n = pow(10, n);
+	int tmp = (num % n) / (n/10);	// 得到要去掉位数的大小
+
+	int res = (num - tmp) / n * (n/10) + num % (n / 10);
+
+	return res;
+}
+
+bool IsRevrse(int num) {
+	int temp = 0, x = num;
+	while (x)
+	{
+		temp = (temp * 10 + x % 10);
+		x = x / 10;
+	}
+	return num == temp ? true : false;
+}
+bool IsPrime(int num) {
+	if (num == 0 || num == 1) {
+		return false;
+	}
+	int n = sqrt(num);
+	for (int i = 2; i <= n; ++i) {
+		if (num % i == 0) {
+			return false;
+		}
+	}
+	return true;
+}
+
+int main() {
+	int N, M;
+	int count = 0;
+	while (cin >> N >> M) {
+		for (int i = N; i <= M; ++i) {
+			int tmp = i, len = 0;
+			while (tmp) {
+				tmp /= 10;
+				len++;
+			}
+			for (int j = 1; j <= len; j++) {
+				int temp = Ridnum(i, j);
+				//cout << temp << endl;
+				if (IsRevrse(temp) && IsPrime(temp))
+					count++;
+			}
+		}
+		cout << count << endl;
+	}
+	return 0;
+}
+#endif
+
+// 最大公共子序列
+#if 1
+#include <iostream>
+#include <vector>
+#include <cstdio>
+using namespace std;
+
+int main() {
+	int N;
+	while (cin >> N) {
+		vector<char> v1(N);
+		vector<char> v2(N);
+		for (int i = 0; i < N; i++) {
+			cin >> v1[i];
+		}
+		for (int i = 0; i < N; i++) {
+			cin >> v2[i];
+		}
+
+		vector<vector<int>> dp(N + 1, vector<int>(N + 1));
+
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++) {
+				if (v1[i] == v2[j])
+					dp[i + 1][j + 1] = dp[i][j] + 1;
+				else
+					dp[i + 1][j + 1] = max(dp[i + 1][j], dp[i][j + 1]);
+			}
+		}
+
+		double res = (double)dp[N][N] / N;
+		if (res - 0.5 > 1e-10) {
+			printf("%.2f No", res);
+		}
+		else {
+			printf("%.2f Yes", res);
+		}
+	}
+	return 0;
+}
+#endif
+
+#if 0
+#include <iostream>
+using namespace std;
+
+int main() {
+	char str[] = "hello";
+	int arr[100];
+	char *p1 = str;
+	int* p2 = arr;
+	cout << sizeof(str) << sizeof(p1) << sizeof(p2);
+	return 0;
+}
+#endif
