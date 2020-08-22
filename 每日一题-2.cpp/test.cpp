@@ -440,7 +440,7 @@ int main() {
 #endif
 
 // 最大公共子序列
-#if 1
+#if 0
 #include <iostream>
 #include <vector>
 #include <cstdio>
@@ -494,3 +494,134 @@ int main() {
 	return 0;
 }
 #endif
+#if 0
+#include <iostream>
+#include <string>
+#include <cstdio>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+	string s;
+	getline
+	while (getline(cin >> s)) {
+		string res;
+		res.resize(4);
+
+		s[0] = s[0] - '0';
+		s[2] = s[2] - '0';
+		s[6] = s[6] - '0';
+		s[8] = s[8] - '0';
+
+		if (s[4] == '+') {
+			// 调整分母至相等
+			while (1) {
+				if (s[2] == s[8]) {
+					break;
+				}
+				else if (s[2] < s[8]) {
+					if (s[8] % s[2] == 0) {
+						int tmp = s[8] / s[2];
+						s[2] *= tmp;
+						s[0] *= tmp;
+					}
+					else {
+						int tmp = s[2];
+						s[2] *= s[8], s[0] *= s[8];
+						s[8] *= tmp, s[6] *= tmp;
+					}
+				}
+				else if (s[2] > s[8]) {
+					if (s[2] % s[8] == 0) {
+						int tmp = s[2] / s[8];
+						s[8] *= tmp;
+						s[6] *= tmp;
+					}
+					else {
+						int tmp = s[2];
+						s[2] *= s[8], s[0] *= s[8];
+						s[8] *= tmp, s[6] *= tmp;
+					}
+				}
+			}
+			if (s[0] + s[6] == s[2]) {
+				res[0] = 1;
+			}
+			else {
+				res[0] = s[0] + s[6];
+				res[1] = '/';
+				res[2] = s[2];
+				if (res[0] < res[2]) {
+					int tmp = 0;
+					for (int i = 2; i < res[0]; i++) {
+						if (res[2] % i == 0 && res[0] % i == 0) {
+							tmp = s[2] / i;
+						}
+					}
+					if (tmp) {
+						res[0] /= tmp, res[2] /= tmp;
+					}
+				}
+				else if (res[0] > res[2]) {
+					int tmp = 0;
+					for (int i = 2; i < res[2]; i++) {
+						if (res[2] % i == 0 && res[0] % i == 0) {
+							tmp = s[2] / i;
+						}
+					}
+					if (tmp) {
+						s[0] /= tmp, s[2] /= tmp;
+					}
+				}
+				res[0] += '0';
+				res[2] += '0';
+			}
+		}
+		else if (s[4] == '-') {
+
+		}
+		else if (s[4] == '*') {
+
+		}
+		else if (s[4] == '/') {
+
+		}
+		cout << res << endl;
+	}
+	return 0;
+}
+#endif
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+	int N, M;
+	cin >> N >> M;
+	vector<vector<int>> data(N, vector<int>(2));
+	for (int i = 0; i < N; i++) {
+		cin >> data[i][0] >> data[i][1];
+	}
+	vector<int> res(M), v(N);
+	for (int i = 0; i < N; i++) {
+		v[i] = data[i][0] + data[i][1] * 2;
+	}
+
+	for (int j = 0; j < M; j++) {
+		int sum = 0, tmp, i;
+		for (i = 0; i < N; i++) {
+			if (v[i] > sum) {
+				tmp = i + 1;
+				sum = v[i];
+			}
+		}
+		res[j] = tmp;
+		v[tmp-1] = 0;
+	}
+
+	for (auto a : res) {
+		cout << a << ' ';
+	}
+	return 0;
+}
