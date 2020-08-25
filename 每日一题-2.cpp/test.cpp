@@ -592,6 +592,7 @@ int main() {
 }
 #endif
 
+#if 0
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -625,3 +626,82 @@ int main() {
 	}
 	return 0;
 }
+#endif
+
+
+
+#if 0
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+	int n;
+	while (cin >> n) {
+		vector<int> v(n);
+		for (int i = 0; i < n; i++) {
+			cin >> v[i];
+		}
+
+		int count = 0;
+		while (1) {
+			int flag = 1;
+			for (int i = 1; i < n; i++) {
+				if (v[i] != v[i - 1]) {
+					flag = 0;
+					break;
+				}
+			}
+			if (flag) {
+				cout << count << endl;
+				break;
+			}
+			else {
+				count++;
+				sort(v.begin(), v.end());
+				for (int i = 0; i < n - 1; i++) {
+					v[i] += 1;
+				}
+			}
+		}
+	}
+	return 0;
+}
+#endif
+
+#if 0
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main() {
+	string s;
+	int n;
+
+	while (cin >> s >> n) {
+		vector<int> v(10);
+		for (int i = 0; i < 10; i++) {
+			v[i] = i;
+		}
+		vector<vector<int>> v(n, vector<int>(2));
+		int len = s.size();
+		for (int i = 0; i < n; i++) {
+			cin >> v[i][0] >> v[i][1];
+		}
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; i < len; j++) {
+				if (v[i][0] == s[j] - '0') {
+					s[j] = s[j] - v[i][0] + v[i][1];
+				}
+			}
+		}
+		cout << s << endl;
+	}
+
+	return 0;
+}
+#endif
+
